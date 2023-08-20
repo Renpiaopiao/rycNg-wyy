@@ -27,12 +27,14 @@
               <i nz-icon type="arrow-right" theme="outline"></i>
             </a>
           </div>
+
           <div class="down">
             <div class="down-wrap">
               <app-single-sheet
                 *ngFor="let item of songSheetList"
                 class="sheet-item"
                 [sheet]="item"
+                (onPlay)="onPlaySheet($event)"
               >
               </app-single-sheet>
             </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NzCarouselComponent } from 'ng-zorro-antd';
 import { map } from 'rxjs/internal/operators';
 import { Banner, HotTag, Singer, SongSheet } from 'src/app/services/data-types/common.types';
+import { SheetService } from 'src/app/services/sheet.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
   @ViewChild(NzCarouselComponent, { static: true }) private nzCarousel: NzCarouselComponent;
 
   constructor(
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private sheetService:SheetService
   ) { 
     this.route.data.pipe(map(res => res.homeDatas)).subscribe(([banners,hotTags,songSheetList,singers]) => {
       //路由守卫返回值再解构赋值
@@ -40,6 +42,13 @@ export class HomeComponent implements OnInit {
 
   onChangeSlide(type: string){
     this.nzCarousel[type]()
+  }
+
+  onPlaySheet(id:number){
+    this.sheetService.playSheet(id).subscribe(res => {
+      console.log(res);
+      
+    })
   }
 
 }

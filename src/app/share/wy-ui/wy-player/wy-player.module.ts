@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { WyPlayerComponent } from './wy-player.component';
 
 
-
 @NgModule({
   declarations: [WyPlayerComponent],
   imports: [
