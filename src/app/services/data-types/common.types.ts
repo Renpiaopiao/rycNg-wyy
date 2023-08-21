@@ -44,3 +44,7 @@ export type SongUrl = {
   id: number;
   url: string;
 }
+
+export interface AnyJson {
+  [key: string]: any;
+}
